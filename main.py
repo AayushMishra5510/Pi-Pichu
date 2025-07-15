@@ -9,10 +9,10 @@ import os_utils
 
 # --- TTS Setup ---
 
-if sys.platform == "win32":
-    engine = pyttsx3.init('sapi5')
+if sys.platform == "linux":
+    engine = pyttsx3.init('espeak')
     voices = engine.getProperty('voices')
-    engine.setProperty('voice', voices[2].id)
+    engine.setProperty('voice', voices[0].id)
 
 def speak(text):
     print(f"Pichu: {text}")
