@@ -43,15 +43,6 @@ automation = PichuAI(api_key=API_KEY)
 def handle_query(query):
     query = query.lower().strip()
     
-    # ---------- Music Commands -----------
-    elif 'play music' in query or 'play song' in query:
-        return play_music()
-    elif 'next song' in query or 'next music' in query:
-        return play_music(next_song=True)
-    elif 'list of songs' in query or 'list of music' in query:
-        return list_songs()
-    elif 'play' in query and len(query.split()) > 1:
-        return play_specific_song(query)
    
     # --------- Autiomation Queries ----------
     elif "time" in query:
