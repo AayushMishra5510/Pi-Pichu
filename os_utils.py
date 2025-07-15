@@ -8,6 +8,12 @@ try:
 except ImportError:
     CLSCTX_ALL = None  # Or define alternative behavior
 
+import platform
+if platform.system() == "Windows":
+    from pycaw.pycaw import AudioUtilities
+else:
+    AudioUtilities = None  # or skip feature
+
 # Volume control
 from pycaw.pycaw import AudioUtilities, IAudioEndpointVolume
 
