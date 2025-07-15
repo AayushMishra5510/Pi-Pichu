@@ -2,12 +2,11 @@ import cv2
 import pytesseract
 from tkinter import Tk, filedialog
 from PIL import Image
-from main import speak
 
 def select_image_via_dialog():
     root = Tk()
     root.withdraw()
-    speak("Please select an image file.")
+    print("Please select an image file.")
     file_path = filedialog.askopenfilename(
         title="Select an image",
         initialdir="/",
@@ -22,10 +21,8 @@ def analyze_image_text_and_faces(image_path=None):
     else:
         file_path = image_path
     if not file_path:
-        speak("No file selected.")
         return "No file selected."
 
-    speak("Working on it! Please wait.")
     text = extract_text_from_image(file_path)
     face_count = detect_faces(file_path)
 
@@ -36,7 +33,6 @@ def analyze_image_text_and_faces(image_path=None):
     # Truncate extracted text for speaking if too long
     spoken_text = text if len(text) <= 200 else text[:200] + "..."
     spoken_result = f"Extracted text: {spoken_text or 'No text found.'}\nFaces detected: {face_count}"
-    speak(spoken_result)
     summary.append(f"Faces detected: {face_count}")
     result = "\n".join(summary)
     return result
