@@ -94,7 +94,6 @@ def main_cli():
            break
        response = handle_query(query)
        print(f"Pichu: {response}")
-         return pichu_model.handle_ai_query(query)
 
 
 if __name__ == "__main__":
