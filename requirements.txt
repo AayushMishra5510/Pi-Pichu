@@ -11,3 +11,4 @@ wikipedia
 scikit-learn
 google.generativeai
 requests
+comtypes
