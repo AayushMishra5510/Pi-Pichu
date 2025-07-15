@@ -5,7 +5,6 @@ import pyttsx3
 import webbrowser
 from Model import PichuModel
 from Automation import PichuAI, play_music, play_specific_song, list_songs, search_google, search_wiki, search_youtube, search_chatgpt
-import os_utils
 
 # --- TTS Setup ---
 
@@ -43,69 +42,6 @@ automation = PichuAI(api_key=API_KEY)
 
 def handle_query(query):
     query = query.lower().strip()
-    
-   
-    # ---------- OS and system commands -----------  
-    if "open notepad" in query:
-        return os_utils.open_app("notepad")
-    
-    elif "open calculator" in query:
-        return os_utils.open_app("calculator")
-    
-    elif "open command prompt" in query or "open cmd" in query:
-        return os_utils.open_app("cmd")
-    
-    elif "open file explorer" in query or "open explorer" in query:
-        return os_utils.open_app("explorer")
-    
-    elif "open settings" in query:
-        return os_utils.open_app("settings")
-    
-    elif "open chatgpt" in query or "open chat gpt" in query:
-        return os_utils.open_app("chatgpt")
-    
-    elif "open brave" in query or "open browser" in query:
-        return os_utils.open_app("brave")
-    
-    elif "shutdown" in query:
-        os_utils.shutdown()
-        return "Shutting down the system."
-    
-    elif "restart" in query:
-        os_utils.restart()
-        return "Restarting the system."
-    
-    elif "sleep" in query:
-        os_utils.sleep()
-        return "Putting the system to sleep."
-    
-    elif "increase brightness" in query or "brightness up" in query:
-        os_utils.increase_brightness()
-        return "Brightness increased."
-    
-    elif "decrease brightness" in query or "brightness down" in query:
-        os_utils.decrease_brightness()
-        return "Brightness decreased."
-    
-    elif "increase volume" in query or "volume up" in query:
-        os_utils.increase_volume()
-        return "Volume increased."
-    
-    elif "decrease volume" in query or "volume down" in query:
-        os_utils.decrease_volume()
-        return "Volume decreased."
-    
-    elif "mute volume" in query or "mute" in query:
-        os_utils.mute_volume()
-        return "Volume muted."
-    
-    elif "unmute volume" in query or "unmute" in query:
-        os_utils.unmute_volume()
-        return "Volume unmuted."
-    
-    elif "turn on wifi" in query or "enable wifi" in query:
-        os_utils.enable_wifi()
-        return "WiFi enabled."
     
     # ---------- Music Commands -----------
     elif 'play music' in query or 'play song' in query:
