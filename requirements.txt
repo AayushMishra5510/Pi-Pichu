@@ -1,0 +1,13 @@
+Flask
+opencv-python
+pytesseract
+Pillow
+pyttsx3
+SpeechRecognition
+numpy
+opencv-python
+gunicorn
+wikipedia
+scikit-learn
+google.generativeai
+requests
