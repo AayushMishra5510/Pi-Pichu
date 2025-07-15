@@ -21,8 +21,6 @@ def take_command():
         return query
     except Exception:
         return input("Type your command: ")
-
-
 # --- Main Query Handler ---
 API_KEY = "AIzaSyBvTHlUDojbUvr3V-cuRkFHgyUkrKvgU4E"
 pichu_model = PichuModel(api_key=API_KEY)
@@ -43,20 +41,20 @@ def handle_query(query):
         webbrowser.open("https://google.com")
         return "Opening Google."
     elif query.startswith("search for") or query.startswith("google"):
-        return search_google(query)
+        return automation.search_google(query)
     elif "open youtube" in query or query.startswith("search on youtube") or query.startswith("youtube"):
-        return search_youtube(query)
+        return automation.search_youtube(query)
     elif "on chat gpt" in query or "search on chatgpt" in query:
-        return search_chatgpt(query)
+        return automation.search_chatgpt(query)
     elif "wikipedia" in query or "search on wikipedia" in query:
-        return search_wiki(query)
+        return automation.search_wiki(query)
     elif "weather" in query:
         city = automation._extract_city(query) or "Bilaspur"
         return automation.get_weather(city)
     
     elif " image" in query or "text from image" in query or "image recognition" in query:
         from image import analyze_image_text_and_faces
-        result = analyze_image_text_and_faces()
+        result = model.analyze_image_text_and_faces()
         return result
     
     # ----------- History for gemini response -----------
