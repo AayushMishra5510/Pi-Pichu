@@ -3,7 +3,10 @@ import sys
 import os
 # Installing pycaw screen-brightness-control
 from ctypes import cast, POINTER
-from comtypes import CLSCTX_ALL
+try:
+    from comtypes import CLSCTX_ALL
+except ImportError:
+    CLSCTX_ALL = None  # Or define alternative behavior
 
 # Volume control
 from pycaw.pycaw import AudioUtilities, IAudioEndpointVolume
