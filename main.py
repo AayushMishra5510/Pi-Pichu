@@ -7,17 +7,6 @@ from Model import PichuModel
 from Automation import PichuAI, play_music, play_specific_song, list_songs, search_google, search_wiki, search_youtube, search_chatgpt
 
 # --- TTS Setup ---
-
-if sys.platform == "linux":
-    engine = pyttsx3.init('espeak')
-    voices = engine.getProperty('voices')
-    engine.setProperty('voice', voices[0].id)
-
-def speak(text):
-    print(f"Pichu: {text}")
-    engine.say(text)
-    engine.runAndWait()
-    
 def take_command():
     r = sr.Recognizer()
     with sr.Microphone() as source:
@@ -31,7 +20,6 @@ def take_command():
         print(f"==> Master : {query}")
         return query
     except Exception:
-        speak("Sorry, I did not understand that. Could you please repeat?")
         return input("Type your command: ")
 
 
@@ -99,29 +87,14 @@ def handle_query(query):
 
 # --- CLI Entry Point ---
 def main_cli():
-    hour = int(datetime.datetime.now().hour)
-    if hour>=0 and hour<12:
-        speak("Good Morning!")
-
-    elif hour>=12 and hour<18:
-        speak("Afternoon!")
-
-    else:
-        speak("Evening Master!")
-
-    speak("I am Picchu. Please tell me how may I help you")
-    while True:
-        query = take_command()
-        if not query or query == "none":
-            continue
-        if 'quit' in query or 'exit' in query:
-            speak("Goodbye Sir, have a nice day!")
-            break
-        response = handle_query(query)
-        speak(response)
-
-           # Fallback: AI/Chat/Automation
-    return pichu_model.handle_ai_query(query)
+     while True:
+       query = input("You: ")
+       if query.lower() in ["quit", "exit"]:
+           print("Goodbye!")
+           break
+       response = handle_query(query)
+       print(f"Pichu: {response}")
+         return pichu_model.handle_ai_query(query)
 
 
 if __name__ == "__main__":
